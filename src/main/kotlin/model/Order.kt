@@ -28,4 +28,8 @@ data class Order(
         result = 31 * result + apartments.contentHashCode()
         return result
     }
+
+    companion object {
+        const val FIELDS_COUNT = 4
+    }
 }

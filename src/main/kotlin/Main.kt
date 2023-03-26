@@ -1,7 +1,11 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import model.ApartmentStatus
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+
+    val adapter = DI.createApartmentAdapter()
+
+    //1 фича - получить количество свободных\проданных\забронированных квартир
+    println(adapter.getApartmentsInfo(ApartmentStatus.Sold))
+    println(adapter.getApartmentsInfo(ApartmentStatus.Free))
+    println(adapter.getApartmentsInfo(ApartmentStatus.Book))
 }
