@@ -7,4 +7,8 @@ data class Apartment(
     val apartmentSize: Int, //общая площаль квартиры
     val price: Int, //цена при покупке
     val status: ApartmentStatus //актуальный статус квартиры (продана, свободна, бронь)
-    )
+) {
+    companion object {
+        const val FIELDS_COUNT = 6
+    }
+}
