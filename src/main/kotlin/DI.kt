@@ -6,6 +6,7 @@ import data.source.FileLoader
 import domain.ApartmentRepository
 import domain.ApartmentUseCase
 import domain.ApartmentUseCaseImpl
+import domain.ApartmentsByBedroomCountUseCase
 import ui.ApartmentAdapter
 
 object DI {
@@ -17,7 +18,13 @@ object DI {
 
     //зависимости для слоя domain
     fun createApartmentUseCase(): ApartmentUseCase = ApartmentUseCaseImpl(createRepository())
+    fun createApartmentsByBedrromCount(): ApartmentsByBedroomCountUseCase =
+        ApartmentsByBedroomCountUseCase(createRepository())
 
     //зависимости для слоя UI
-    fun createApartmentAdapter() = ApartmentAdapter(apartmentUseCase = createApartmentUseCase())
+    fun createApartmentAdapter() = ApartmentAdapter(
+        apartmentUseCase = createApartmentUseCase(),
+        apartmentsByBedroomCount = createApartmentsByBedrromCount()
+    )
+
 }
