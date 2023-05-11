@@ -7,6 +7,7 @@ import domain.ApartmentRepository
 import domain.ApartmentUseCase
 import domain.ApartmentUseCaseImpl
 import domain.ApartmentsByBedroomCountUseCase
+import domain.FilterUseCase
 import ui.ApartmentAdapter
 
 object DI {
@@ -21,10 +22,13 @@ object DI {
     fun createApartmentsByBedrromCount(): ApartmentsByBedroomCountUseCase =
         ApartmentsByBedroomCountUseCase(createRepository())
 
+    fun createFilterUseCase() = FilterUseCase(createRepository())
+
     //зависимости для слоя UI
     fun createApartmentAdapter() = ApartmentAdapter(
         apartmentUseCase = createApartmentUseCase(),
-        apartmentsByBedroomCount = createApartmentsByBedrromCount()
+        apartmentsByBedroomCount = createApartmentsByBedrromCount(),
+        filterUseCase = createFilterUseCase()
     )
 
 }
